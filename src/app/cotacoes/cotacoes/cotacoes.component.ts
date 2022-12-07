@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CotacoesService } from '../cotacoes-service/cotacoes.service';
 import { Cotacoes } from '../model/cotacoes';
 
 @Component({
@@ -8,6 +9,10 @@ import { Cotacoes } from '../model/cotacoes';
 })
 export class CotacoesComponent {
 
-  cotacoes: Cotacoes[] = [{ "cotacaoCompra": 5.50840, "cotacaoVenda": 5.51120, "dataHoraCotacao": "2022-07-06 10:06:15.609" }];
+  cotacoes: Cotacoes[];
   displayedColumns = ['cotacaoCompra', 'cotacaoVenda', 'dataHoraCotacao']
+
+  constructor(cotacoesService: CotacoesService) {
+    this.cotacoes = cotacoesService.getCotacoes()
+  }
 }
