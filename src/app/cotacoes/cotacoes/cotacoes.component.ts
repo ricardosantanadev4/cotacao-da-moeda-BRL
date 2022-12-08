@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 import { CotacoesService } from '../cotacoes-service/cotacoes.service';
 import { Cotacoes } from '../model/cotacoes';
 
@@ -9,10 +10,10 @@ import { Cotacoes } from '../model/cotacoes';
 })
 export class CotacoesComponent {
 
-  cotacoes: Cotacoes[];
+  cotacoes: Cotacoes[] = [];
   displayedColumns = ['cotacaoCompra', 'cotacaoVenda', 'dataHoraCotacao']
 
   constructor(cotacoesService: CotacoesService) {
-    this.cotacoes = cotacoesService.getCotacoes()
+    cotacoesService.getCotacoes().subscribe(cotacoes => this.cotacoes = cotacoes);
   }
 }
