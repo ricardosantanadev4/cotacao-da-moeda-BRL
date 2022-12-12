@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first, tap } from 'rxjs';
 import { Cotacoes } from '../model/cotacoes';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class CotacoesService {
   }
 
   getCotacoes() {
-    return this.httpClient.get<Cotacoes[]>(this.API);
+    return this.httpClient.get<Cotacoes[]>(this.API).pipe(
+      first(),
+      tap(cotacoes => console.log(cotacoes))
+
+    );
   }
 }
