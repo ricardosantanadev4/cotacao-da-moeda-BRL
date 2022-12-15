@@ -9,7 +9,7 @@ import { Cotacoes } from '../model/cotacoes';
 export class CotacoesService {
 
   // cotacoes: Cotacoes[] = [{ "cotacaoCompra": 5.50840, "cotacaoVenda": 5.51120, "dataHoraCotacao": "2022-07-06 10:06:15.609" }]
-  private readonly API = 'http://localhost:3000/values1'
+  private readonly API = 'http://localhost:3000/values'
 
   constructor(private httpClient: HttpClient) {
   }

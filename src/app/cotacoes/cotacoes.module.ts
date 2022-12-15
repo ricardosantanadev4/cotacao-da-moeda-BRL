@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CotacoesRoutingModule } from './cotacoes-routing.module';
 import { CotacoesComponent } from './cotacoes/cotacoes.component';
 import { AppMaterialModule } from '../shared/app-material/app-material.module'
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,7 +15,8 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module'
   imports: [
     CommonModule,
     CotacoesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class CotacoesModule { }
