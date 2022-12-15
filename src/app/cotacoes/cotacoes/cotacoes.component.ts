@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { CotacoesService } from '../cotacoes-service/cotacoes.service';
 import { Cotacoes } from '../model/cotacoes';
 
@@ -14,6 +14,11 @@ export class CotacoesComponent {
   displayedColumns = ['cotacaoCompra', 'cotacaoVenda', 'dataHoraCotacao']
 
   constructor(cotacoesService: CotacoesService) {
-    this.cotacoes$ = cotacoesService.getCotacoes();
+    this.cotacoes$ = cotacoesService.getCotacoes().pipe(
+      catchError(error => {
+        console.log(error);
+        return of([])
+      })
+    );
   }
 }
